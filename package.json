@@ -1,0 +1,40 @@
+{
+  "name": "interview-backend-engineer",
+  "version": "1.0.0",
+  "description": "assignment to create a simple rest api app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "jest --watchAll",
+    "build": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amirsciammas/interview-backend-engineer.git"
+  },
+  "author": "Ismail Alammar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amirsciammas/interview-backend-engineer/issues"
+  },
+  "homepage": "https://github.com/amirsciammas/interview-backend-engineer#readme",
+  "dependencies": {
+    "better-sqlite3": "^7.5.0",
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "morgan": "^1.10.0",
+    "sequelize": "^6.17.0",
+    "sqlite3": "^5.0.2",
+    "swagger-jsdoc": "^6.1.0",
+    "swagger-ui-express": "^4.3.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "superagent": "^7.1.1",
+    "supertest": "^6.2.2"
+  }
+}
