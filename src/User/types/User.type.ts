@@ -26,3 +26,8 @@ export interface UserWithAlbum extends User {
 export interface AlbumWithImages extends Album {
   images?: Image[];
 }
+
+export enum SortOption {
+  ASC = 'asc',
+  DESC = 'desc',
+}

@@ -15,11 +15,15 @@ import {
   User,
   UserWithAlbum,
 } from '../Types/User.type';
+import { ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('User')
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @ApiOperation({ summary: 'Get User by Id' })
+  @ApiOkResponse({})
   @Get(':id')
   async getUserById(@Param() prams: UserId): Promise<User> {
     const user: User = await this.userService.getUserById(prams.id);
@@ -29,6 +33,8 @@ export class UserController {
     return user;
   }
 
+  @ApiOperation({ summary: 'Get User With Albums by Id' })
+  @ApiOkResponse({})
   @Get(':id/albums')
   async getUserAndAlbum(
     @Param() prams: UserId,
@@ -54,6 +60,8 @@ export class UserController {
     return { ...user, albums };
   }
 
+  @ApiOperation({ summary: 'Get Albums with images by User Id' })
+  @ApiOkResponse({})
   @Get(':id/albums/images')
   async getAlbumAndImages(
     @Param() prams: UserId,
