@@ -1,36 +1,26 @@
 # Backend Engineer Interview Project
+## Overview
+Super cool Artist API to manage Artist and their Albums with Images.
+### REST Endpoints
+1. GET `/user/{userId}` => Returns data of that user.
+2. GET `/user/{userId}/albums` => Returns user with albums, supports pagination with sort by album-title. `?page={Number}&size={Number}&sortByTitle={asc/desc}`
+3. GET `/user/{userId}/albums/images` => Returns Users albums with images, supports pagination with sort by album-title. `?page={Number}&size={Number}&sortByTitle={asc/desc}`
+----
+### Local Running
+1. Clone the Repo
+2. Install node packages
+    ```
+     yarn install / npm install
+    ```
+3. Run Application
+    ```
+    yarn start / npm start
+    ```
+4. [Click](http://localhost:3000/) => Might able to see **I'm Good!**
 
-### **High level spec**
-
-Your task is to build a REST API in Node.js that returns data from sqlite database.
-
-The `database.sqli` file is a database that includes 3 tables:
-- *users* - each row represnts a single user
-- *albums* - albums of a user
-- *images* - images of an album
-
-The `entities_sample.txt` file includes the structure of the tables and sample data of each table.
-
-The API should have the following endpoints:
-- Get User by user Id
-- Get User and Albums by user Id
-- Get Albums and Images by user Id
-    - Endpoint should include support for pagination
-    - Endpoint should include support for sorting by album title
-
------
-
-### **How to share your results?**
-- [ ] Clone this repository and create your own branch to work on.
-- [ ] .... develop .....
-- [ ] Once you are ready, create a pull request with your code.
-
-
-### **Evaluation:**
-- [ ] There should be **at least** one test written and the README file should include instructions on how to execute it.
-- [ ] You should provide clear documentation of the API, you can use Swagger or any other format.
-- [ ] The app should build without errors (typically using `npm run build`). If there are necessary steps required to get it to compile, those should be covered in the README.md.
-- [ ] No crashes or bugs.
-- [ ] Code is easily understood and communicative (eg. comments, variable names, etc). 
-- [ ] Everything that you decide to not do due to the limitation of time should be documented in the README.
-- [ ] GitHub commit history is consistent, easy to follow and understand. 
+5. If above all goes well, everything should be running now.
+## [Swagger-Ui](http://localhost:3000/api/doc/) 
+----
+## Tech Stack
+- TypeScript
+- NestJs with Express
