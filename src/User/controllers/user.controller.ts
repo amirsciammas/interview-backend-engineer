@@ -44,6 +44,7 @@ export class UserController {
         userId: prams.id,
         offset,
         limit,
+        sortByTitle: userQueryDTO.sortByTitle,
       }),
     ]);
 
@@ -67,6 +68,7 @@ export class UserController {
       userId: prams.id,
       offset,
       limit,
+      sortByTitle: userQueryDTO.sortByTitle,
     });
 
     // Lazy Fetch, If we use parallel 3 queries in Data base, using this only two.

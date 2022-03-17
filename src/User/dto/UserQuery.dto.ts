@@ -1,4 +1,4 @@
-import { IsOptional, IsNumberString } from 'class-validator';
+import { IsOptional, IsNumberString, IsIn } from 'class-validator';
 
 export class UserQueryDTO {
   @IsOptional()
@@ -8,4 +8,8 @@ export class UserQueryDTO {
   @IsOptional()
   @IsNumberString()
   readonly size: number;
+
+  @IsOptional()
+  @IsIn(['asc', 'desc'])
+  readonly sortByTitle: string;
 }

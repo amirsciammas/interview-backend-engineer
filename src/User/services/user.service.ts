@@ -24,14 +24,18 @@ export class UserService {
     userId,
     offset,
     limit,
+    sortByTitle,
   }: {
     userId: number;
     offset: number;
     limit: number;
+    sortByTitle?: string;
   }): Promise<Album[]> {
     try {
       return this.sqliteService.all<Album>(
-        `select * from albums WHERE userId = $userId LIMIT $limit OFFSET $offset`,
+        `select * from albums WHERE userId = $userId ${
+          sortByTitle ? 'ORDER BY title ' + sortByTitle : ''
+        } LIMIT $limit OFFSET $offset`,
         { $userId: userId, $offset: offset, $limit: limit },
       );
     } catch (err) {
