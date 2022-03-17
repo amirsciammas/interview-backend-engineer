@@ -95,7 +95,7 @@ export class SqliteService implements OnModuleInit, OnModuleDestroy {
   async onModuleInit() {
     //console.log('On module init called');
     try {
-      await this.open('src/database.sqli');
+      await this.open('database.sqli');
       console.log('Opening DB');
     } catch (Error) {
       console.log(Error);
