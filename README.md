@@ -1,36 +1,46 @@
 # Backend Engineer Interview Project
 
-### **High level spec**
+### **Overview**
 
-Your task is to build a REST API in Node.js that returns data from sqlite database.
+Rest Api App to manage `user and user album` informations
 
-The `database.sqli` file is a database that includes 3 tables:
-- *users* - each row represnts a single user
-- *albums* - albums of a user
-- *images* - images of an album
+### **How it works ?**
 
-The `entities_sample.txt` file includes the structure of the tables and sample data of each table.
-
-The API should have the following endpoints:
-- Get User by user Id
-- Get User and Albums by user Id
-- Get Albums and Images by user Id
-    - Endpoint should include support for pagination
-    - Endpoint should include support for sorting by album title
+The REST API have the following endpoints:
+- `/users/{id}` - to get user information by userId [swagger_doc](http://localhost:3000/api-docs/#/Users/get_users__id_)
+- `/user/{id}/albums` - to get user albums by userId [swagger_doc](http://localhost:3000/api-docs/#/Users/get_users__id__albums)
+- `/user/{id}/albums/images` - to get user albums and images by userId , with optional parameters [swagger_doc](http://localhost:3000/api-docs/#/Users/get_users__id__albums_images)
+    - `sortByAlbumTitle` - to sort the response by album title , and it has two possibilities [`ASC` , `DESC`]
+    - `limit` and `offset` for pagination 
 
 -----
 
-### **How to share your results?**
-- [ ] Clone this repository and create your own branch to work on.
-- [ ] .... develop .....
-- [ ] Once you are ready, create a pull request with your code.
 
+<!-- GETTING STARTED -->
+## Getting Started
 
-### **Evaluation:**
-- [ ] There should be **at least** one test written and the README file should include instructions on how to execute it.
-- [ ] You should provide clear documentation of the API, you can use Swagger or any other format.
-- [ ] The app should build without errors (typically using `npm run build`). If there are necessary steps required to get it to compile, those should be covered in the README.md.
-- [ ] No crashes or bugs.
-- [ ] Code is easily understood and communicative (eg. comments, variable names, etc). 
-- [ ] Everything that you decide to not do due to the limitation of time should be documented in the README.
-- [ ] GitHub commit history is consistent, easy to follow and understand. 
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Installation
+
+1. Clone the repo
+
+2. Install npm packages
+   ```sh
+   npm install
+   ```
+3. In terminal run
+   ```sh
+   npm start
+   ```
+
+### Test
+the application includes `Unit Test`, to make sure the functionality is correct before deploy to `staging/prod`
+to run test cases execute `npm test` in termina.
+
+### Swagger-Ui
+for more information about the endpoints i've included a swagger-ui (http://localhost:3000/api-docs)
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
