@@ -37,7 +37,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Test
 the application includes `Unit Test`, to make sure the functionality is correct before deploy to `staging/prod`
-to run test cases execute `npm test` in termina.
+to run test cases execute `npm test` in terminal.
 
 ### Swagger-Ui
 for more information about the endpoints i've included a swagger-ui (http://localhost:3000/api-docs)
