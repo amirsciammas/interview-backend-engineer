@@ -9,7 +9,7 @@ const records = Joi.object({
 });
 
 module.exports.validateRecords = () => (req, res, next) => {
-  const { error } = records.validate(req.body);
+  const { error } = records.validate(req.params.id);
   if (error) {
     return res.status(httpCodes.BAD_REQUEST).json({
       code: httpCodes.BAD_REQUEST,

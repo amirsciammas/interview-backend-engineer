@@ -1,5 +1,5 @@
 const express = require("express");
-//TODO DB Configuration const { db }  = require('./configs/dbConfig');
+const { db }  = require('./configs/dbConfig');
 const app = express();
 const morgan = require("morgan");
 const path = require("path");
