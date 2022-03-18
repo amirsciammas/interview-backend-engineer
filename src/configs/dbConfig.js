@@ -8,6 +8,7 @@ const dbName = process.env.DB_FILE_NAME || "database.sqli";
 const sequelize = new Sequelize("", "", "", {
   dialect: "sqlite",
   host: path.resolve(dbName),
+  logging: process.env.NODE_ENV === 'production' ? false : console.log
 });
 
 module.exports = sequelize;
