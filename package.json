@@ -2,9 +2,9 @@
   "name": "interview-backend-engineer",
   "version": "1.0.0",
   "description": "Fatih Yıldızlı interview backend engineer case",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test": "jest",
     "build": "node server.js"
   },
