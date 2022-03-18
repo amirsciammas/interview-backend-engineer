@@ -1,13 +1,11 @@
 # Backend Engineer Interview Project
 
-[![GitHub stars](https://img.shields.io/github/stars/fatihyildizli/nodejs-case.svg)](https://github.com/fatihyildizli/interview-backend-engineer/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/fatihyildizli/nodejs-case.svg)](https://github.com/fatihyildizli/interview-backend-engineer/network/members)
+[![GitHub stars](https://img.shields.io/github/stars/fatihyildizli/interview-backend-engineer.svg)](https://github.com/fatihyildizli/interview-backend-engineer/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/fatihyildizli/interview-backend-engineer.svg)](https://github.com/fatihyildizli/interview-backend-engineer/network/members)
 ![License](https://img.shields.io/github/license/fatihyildizli/interview-backend-engineer)
 ![Code size](https://img.shields.io/github/repo-size/fatihyildizli/interview-backend-engineer)
-![Top Language](https://img.shields.io/github/languages/top/fatihyildizli/interview-backend-engineer)
-![Languages](https://img.shields.io/github/languages/count/fatihyildizli/interview-backend-engineer)
 
-<img src="assets/adidas-logo-branco.png" width="48">
+<img src="assets/adidas-favicon.ico" width="48">
 
 ## Requirements
 The `database.sqli` file is a database that includes 3 tables:
