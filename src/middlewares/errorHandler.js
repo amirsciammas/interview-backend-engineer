@@ -2,6 +2,9 @@ const result = require("../models/result");
 const logger = require("../utils/logger");
 const httpCodes = require("../utils/httpcodes");
 
+/**
+ * Error handler
+ */
 function logError(error) {
   logger.log({ level: "error", message: error });
 }

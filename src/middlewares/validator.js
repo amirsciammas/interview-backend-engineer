@@ -22,6 +22,13 @@ const requestGetUserAlbumsAndImages = Joi.object({
   sortByAlbumTitle: Joi.string().valid("ASC", "DESC", "asc", "desc"),
 });
 
+
+/**
+ * Validate request for UserAlbumsAndImages Method.
+ *
+ * @param {string} id given path userid value
+ * @return return response bad request / success.
+ */
 module.exports.validateRequestUserId = () => (req, res, next) => {
   const { error } = requestUserId.validate({ userid: req.params.id });
   if (error) {
@@ -34,6 +41,14 @@ module.exports.validateRequestUserId = () => (req, res, next) => {
   next();
 };
 
+/**
+ * Validate request for UserAlbumsAndImages Method.
+ *
+ * @param {string} limit given quertstring limit value
+ * @param {string} offset given querystring offset value
+ * @param {string} sortByAlbumTitle given querystring sortByAlbumTitle value
+ * @return return response bad request / success.
+ */
 module.exports.validateRequestGetUserAlbumsAndImages =
   () => (req, res, next) => {
     const { limit, offset, sortByAlbumTitle } = req.query;

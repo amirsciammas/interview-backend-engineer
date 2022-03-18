@@ -5,18 +5,26 @@ const User = require("./User");
 
 class Albums extends Model {}
 
+/**
+ * For Albums Entity depends on DB Table Schema
+ *CREATE TABLE [albums] (
+    [userId] INT, 
+    [id] INT, 
+    [title] VARCHAR (200)
+)
+ */
 Albums.init(
   {
+    userId: {
+      type: DataTypes.INTEGER,
+    },
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
     },
     title: {
       type: DataTypes.STRING,
-    },
-    userId: {
-      type: DataTypes.INTEGER,
-    },
+    }
   },
   {
     sequelize,

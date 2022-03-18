@@ -3,8 +3,20 @@ const sequelize = require("../configs/dbConfig");
 
 class Images extends Model {}
 
+/**
+ * For Images Entity depends on DB Table Schema
+ *CREATE TABLE [images] (
+	[albumId] INT,
+	[id] INT,
+	[title] VARCHAR NULL,
+	[url] VARCHAR (300)
+);
+ */
 Images.init(
   {
+    albumId: {
+        type: DataTypes.INTEGER,
+      },
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,10 +26,7 @@ Images.init(
     },
     url: {
       type: DataTypes.STRING,
-    },
-    albumId: {
-      type: DataTypes.INTEGER,
-    },
+    }
   },
   {
     sequelize,

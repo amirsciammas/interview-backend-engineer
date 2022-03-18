@@ -3,6 +3,16 @@ const sequelize = require("../configs/dbConfig");
 
 class User extends Model {}
 
+/**
+ * For User Entity depends on DB Table Schema
+ *CREATE TABLE [users] (
+	[id] INT NULL,
+	[name] VARCHAR (50),
+	[email] VARCHAR (100),
+	[address_geo_lat] FLOAT,
+	[address_geo_lng] FLOAT
+);
+ */
 User.init(
   {
     id: {
