@@ -59,6 +59,46 @@ Run the command for unit test with coverage
  ```
 $ npm test -- --coverage
  ```
+
+
+## Test Coverage
+File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+----------------------------------------------|---------|----------|---------|---------|-------------------
+All files                                     |   92.61 |    66.66 |    87.5 |   92.56 |                  
+ interview-backend-engineer                   |     100 |      100 |     100 |     100 |                  
+  index.js                                    |     100 |      100 |     100 |     100 |                  
+ interview-backend-engineer/src/configs       |     100 |       50 |     100 |     100 |                  
+  dbConfig.js                                 |     100 |       50 |     100 |     100 | 6-11             
+ interview-backend-engineer/src/controllers   |   74.19 |    66.66 |     100 |   74.19 |                  
+  userController.js                           |   74.19 |    66.66 |     100 |   74.19 | 19-20,35-41,62-68
+ interview-backend-engineer/src/documentation |     100 |      100 |     100 |     100 |                  
+  swagger-options.js                          |     100 |      100 |     100 |     100 |                  
+ interview-backend-engineer/src/dtos          |     100 |       50 |     100 |     100 |                  
+  userDto.js                                  |     100 |       50 |     100 |     100 | 9                
+ interview-backend-engineer/src/entities      |     100 |      100 |     100 |     100 |                  
+  Albums.js                                   |     100 |      100 |     100 |     100 |                  
+  Images.js                                   |     100 |      100 |     100 |     100 |                  
+  User.js                                     |     100 |      100 |     100 |     100 |                  
+ interview-backend-engineer/src/middlewares   |    87.5 |    66.66 |   66.66 |   86.95 |                  
+  errorHandler.js                             |   57.14 |        0 |       0 |   57.14 | 9-14             
+  validator.js                                |     100 |      100 |     100 |     100 |                  
+ interview-backend-engineer/src/models        |     100 |    33.33 |     100 |     100 |                  
+  result.js                                   |     100 |    33.33 |     100 |     100 | 7-13             
+ interview-backend-engineer/src/routes        |     100 |      100 |     100 |     100 |                  
+  apiRoute.js                                 |     100 |      100 |     100 |     100 |                  
+ interview-backend-engineer/src/services      |     100 |      100 |     100 |     100 |                  
+  userService.js                              |     100 |      100 |     100 |     100 |                  
+ interview-backend-engineer/src/utils         |     100 |      100 |     100 |     100 |                  
+  httpCodes.js                                |     100 |      100 |     100 |     100 |                  
+  logger.js                                   |     100 |      100 |     100 |     100 |                  
+----------------------------------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 passed, 1 total
+Tests:       16 passed, 16 total
+Snapshots:   0 total
+Time:        6.435 s
+
+
+
 ## Endpoints
 
 `GET https://localhost:1949/api/users/{id}` -  Get User by user Id
