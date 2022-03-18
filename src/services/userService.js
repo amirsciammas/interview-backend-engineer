@@ -1,37 +1,39 @@
-const db = require('../configs/dbConfig');
-const dotenv = require('dotenv');
-dotenv.config();
+const Albums = require("../entities/Albums");
+const Images = require("../entities/Images");
+const User = require("../entities/User");
+const dto = require("../dtos/userDto");
 
-function getUserById(userid) {
+exports.getUser = async (id) => {
+  return await User.findByPk(id);
+};
 
-    const data = db.query(`SELECT * FROM users WHERE id= ?`, userid);
+exports.getUserAlbums = async (id) => {
+  const data = await Albums.findAll({ where: { userId: id }, include: [User] });
+  return dto.UserAlbumDto(data);
+};
 
-    return {
-      data
-    }
+exports.getUserAlbumsAndImages = async (
+  id,
+  limit = Number.MAX_SAFE_INTEGER,
+  offset = 0,
+  sortByAlbumTitle
+) => {
+  let sortBy = ["id"];
+  if (
+    sortByAlbumTitle !== undefined &&
+    ["ASC", "DESC", "asc", "desc"].indexOf(sortByAlbumTitle) !== -1
+  ) {
+    sortBy = ["title", sortByAlbumTitle];
   }
+  const data = await Albums.findAll({
+    where: {
+      userId: id,
+    },
+    include: [Images],
+    order: [sortBy],
+    limit: limit,
+    offset: offset,
+  });
 
-  function getUserAndAlbumsByUserId(userid) {
-  
-    const data = db.query(`SELECT * FROM users INNER JOIN albums ON users.id=albums.userId WHERE users.id= ?`, userid);
-
-    return {
-      data
-    }
-  }
-  
-  function getAlbumsAndImagesByUserId(userid , page = 1) {
-    const offset = (page - 1) * 10;
-    const data = db.query(`SELECT * FROM users INNER JOIN albums ON users.id=albums.userId INNER JOIN images ON albums.id=images.albumId WHERE users.id= ? LIMIT ?,?`,[userid,offset, config.listPerPage] );
-    const meta = {page};
-  
-    return {
-      data,
-      meta
-    }
-  }
-  module.exports = {
-    getUserById,
-    getUserAndAlbumsByUserId,
-    getAlbumsAndImagesByUserId
-  }
+  return data;
+};

@@ -1,20 +1,13 @@
-const sqlite = require("better-sqlite3");
+const { Sequelize } = require("sequelize");
 const path = require("path");
-const db = new sqlite(path.resolve("database.sqli"), { fileMustExist: true });
-if (db.open) {
-  console.log(`Connected DBName:[${db.name}] DBState:[${db.open}]`);
-} else {
-  console.log(`Unable to connect DBName:[${db.name}] DBState:[${db.open}]`);
-}
-function query(sql, params) {
-  return db.prepare(sql).all(params);
-}
+const dotenv = require("dotenv");
+dotenv.config();
 
-function run(sql, params) {
-  return db.prepare(sql).run(params);
-}
+const dbName = process.env.DB_FILE_NAME || "database.sqli";
 
-module.exports = {
-  query,
-  run,
-};
+const sequelize = new Sequelize("", "", "", {
+  dialect: "sqlite",
+  host: path.resolve(dbName),
+});
+
+module.exports = sequelize;

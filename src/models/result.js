@@ -1,11 +1,11 @@
-const result = (code, msg, records = null) => {
+const result = (code, msg, results = null) => {
   const response = {
     code,
     msg,
   };
 
-  if (records) {
-    response.records = records;
+  if (results) {
+    response.results = results;
   }
 
   return response;

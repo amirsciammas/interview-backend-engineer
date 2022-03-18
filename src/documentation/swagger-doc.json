@@ -3,5 +3,370 @@
   "info": {
     "version": "0.0.1",
     "title": " Fatih Yıldızlı - Backend Engineer Interview Project API"
+  },
+  "tags": [
+    {
+      "name": "Users"
+    }
+  ],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/api/users/{id}": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get User by user Id",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "the user id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "examples": {
+              "code": 200,
+              "msg": "Success"
+            },
+            "schema": {
+              "$ref": "#/definitions/Success_GetUser"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "examples": {
+              "code": 400,
+              "msg": "Bad Request"
+            },
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "examples": {
+              "code": 404,
+              "msg": "Not Found"
+            },
+            "schema": {
+              "$ref": "#/definitions/NotFound"
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{id}/albums": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Retrieve User Albums by user Id",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "the user id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "examples": {
+              "code": 200,
+              "msg": "Success"
+            },
+            "schema": {
+              "$ref": "#/definitions/Success_GetUserAlbumByUserId"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "examples": {
+              "code": 400,
+              "msg": "Bad Request"
+            },
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "examples": {
+              "code": 404,
+              "msg": "Not Found"
+            },
+            "schema": {
+              "$ref": "#/definitions/NotFound"
+            }
+          }
+        }
+      }
+    },
+    "/api/users/{id}/albums/images": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Retrieve User Albums by user Id",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "retrieve user albums and images by user id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "sortByAlbumTitle",
+            "in": "query",
+            "description": " decision for album title ordering asc or desc (Value must be ASC or DESC.)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "for pagination offset value",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "for pagination limit value",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "examples": {
+              "code": 200,
+              "msg": "Success"
+            },
+            "schema": {
+              "$ref": "#/definitions/Success_GetUserAlbumAndImagesByUserId"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "examples": {
+              "code": 400,
+              "msg": "Bad Request"
+            },
+            "schema": {
+              "$ref": "#/definitions/BadRequest"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "examples": {
+              "code": 404,
+              "msg": "Not Found"
+            },
+            "schema": {
+              "$ref": "#/definitions/NotFound"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Success_GetUserById": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "example": 200
+        },
+        "msg": {
+          "type": "string",
+          "example": "Success"
+        },
+        "results": {
+          "type": "object",
+          "example": {
+            "id": 1,
+            "name": "Leanne Graham",
+            "email": "Sincere@april.biz",
+            "address_geo_lat": -37.3159,
+            "address_geo_lng": 81.1496
+          }
+        }
+      }
+    },
+
+    "Success_GetUserAlbumByUserId": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "example": 200
+        },
+        "msg": {
+          "type": "string",
+          "example": "Success"
+        },
+        "results": {
+          "type": "object",
+          "example": {
+            "id": 1,
+            "name": "Leanne Graham",
+            "email": "Sincere@april.biz",
+            "albums": [
+              {
+                "id": 1,
+                "title": "quidem molestiae enim"
+              },
+              {
+                "id": 2,
+                "title": "sunt qui excepturi placeat culpa"
+              },
+              {
+                "id": 3,
+                "title": "omnis laborum odio"
+              },
+              {
+                "id": 4,
+                "title": "non esse culpa molestiae omnis sed optio"
+              },
+              {
+                "id": 5,
+                "title": "eaque aut omnis a"
+              },
+              {
+                "id": 6,
+                "title": "natus impedit quibusdam illo est"
+              },
+              {
+                "id": 7,
+                "title": "quibusdam autem aliquid et et quia"
+              },
+              {
+                "id": 8,
+                "title": "qui fuga est a eum"
+              },
+              {
+                "id": 9,
+                "title": "saepe unde necessitatibus rem"
+              },
+              {
+                "id": 10,
+                "title": "distinctio laborum qui"
+              }
+            ]
+          }
+        }
+      }
+    },
+
+    "Success_GetUserAlbumAndImagesByUserId": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "example": 200
+        },
+        "msg": {
+          "type": "string",
+          "example": "Success"
+        },
+        "results": {
+          "type": "object",
+          "example": [
+            {
+              "id": 1,
+              "title": "quidem molestiae enim",
+              "userId": 1,
+              "images": [
+                {
+                  "id": 1,
+                  "title": "accusamus beatae ad facilis cum similique qui sunt",
+                  "url": "https://via.placeholder.com/600/92c952",
+                  "albumId": 1
+                },
+                {
+                  "id": 2,
+                  "title": "reprehenderit est deserunt velit ipsam",
+                  "url": "https://via.placeholder.com/600/771796",
+                  "albumId": 1
+                },
+                {
+                  "id": 3,
+                  "title": "officia porro iure quia iusto qui ipsa ut modi",
+                  "url": "https://via.placeholder.com/600/24f355",
+                  "albumId": 1
+                },
+                {
+                  "id": 4,
+                  "title": "culpa odio esse rerum omnis laboriosam voluptate repudiandae",
+                  "url": "https://via.placeholder.com/600/d32776",
+                  "albumId": 1
+                },
+                {
+                  "id": 5,
+                  "title": "natus nisi omnis corporis facere molestiae rerum in",
+                  "url": "https://via.placeholder.com/600/f66b97",
+                  "albumId": 1
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "NotFound": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "example": 404
+        },
+        "msg": {
+          "type": "string",
+          "example": "failure - No such url found on this server"
+        },
+        "results": {
+          "type": "array",
+          "example": []
+        }
+      }
+    },
+    "BadRequest": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "example": 400
+        },
+        "msg": {
+          "type": "string",
+          "example": "failure - \"userid\" must be a number"
+        },
+        "results": {
+          "type": "array",
+          "example": []
+        }
+      }
+    }
   }
 }
