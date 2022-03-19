@@ -1,0 +1,232 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Backend Engineer Interview API",
+    "description": "Backend Engineer Interview API",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for the users in the system"
+    },
+    {
+      "name": "Albums",
+      "description": "API for the albums in the system"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/users/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the user of interest",
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Finds the user associated with the provided user ID",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UserSummary"
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}/albums": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "description": "The ID of the user of interest",
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Finds the user associated with the provided user ID, populated with the user's current album collection.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        }
+      }
+    },
+    "/users/albums": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "formData",
+          "required": true,
+          "description": "The ID of the user of interest",
+          "type": "integer"
+        },
+        {
+          "name": "page_number",
+          "in": "formData",
+          "required": false,
+          "description": "The requested page numbert",
+          "type": "integer"
+        },
+        {
+          "name": "element_number",
+          "in": "formData",
+          "required": false,
+          "description": "The requested number of elements.",
+          "type": "integer"
+        },
+        {
+          "name": "album_title_sorting_criteria",
+          "in": "formData",
+          "required": false,
+          "description": "The status indicating whether the result should be sorted by album title e.g. ASC or DESC",
+          "type": "string"
+        }
+      ],
+      "post": {
+        "tags": ["Albums"],
+        "summary": "Finds a page containing of a complete view of a user albums matching the provided criteria.",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CompleteUserAlbumResult"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "required": ["name", "email", "address_geo_lat", "address_geo_lng"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address_geo_lat": {
+          "type": "number"
+        },
+        "address_geo_lng": {
+          "type": "number"
+        },
+        "albums": {
+          "type": "array",
+          "$ref": "#/definitions/Album"
+        }
+      }
+    },
+    "UserSummary": {
+      "required": ["name", "email", "address_geo_lat", "address_geo_lng"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address_geo_lat": {
+          "type": "number"
+        },
+        "address_geo_lng": {
+          "type": "number"
+        }
+      }
+    },
+    "Album": {
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "user": {
+          "type": "object",
+          "$ref": "#/definitions/User"
+        },
+        "images": {
+          "type": "array",
+          "$ref": "#/definitions/Image"
+        }
+      }
+    },
+    "AlbumImage": {
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "images": {
+          "type": "array",
+          "$ref": "#/definitions/ImageSummary"
+        }
+      }
+    },
+    "Image": {
+      "required": ["title", "url"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "album": {
+          "type": "object",
+          "$ref": "#/definitions/Album"
+        }
+      }
+    },
+    "ImageSummary": {
+      "required": ["title", "url"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    },
+    "CompleteUserAlbumResult": {
+      "required": ["page_number", "element_number"],
+      "properties": {
+        "user": {
+          "type": "object",
+          "$ref": "#/definitions/UserSummary"
+        },
+        "album": {
+          "type": "array",
+          "$ref": "#/definitions/AlbumImage"
+        },
+        "page_number": {
+          "type": "number"
+        },
+        "element_number": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

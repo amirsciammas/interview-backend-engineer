@@ -1,0 +1,66 @@
+{
+   "name": "interview-backend-engineer",
+   "version": "1.0.0",
+   "description": "### **High level spec**",
+   "main": "./src/main.ts",
+   "scripts": {
+      "build": "tsc --project ./",
+      "start": "ts-node ./src/main.ts",
+      "test": "jest"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/amirsciammas/interview-backend-engineer.git"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "bugs": {
+      "url": "https://github.com/amirsciammas/interview-backend-engineer/issues"
+   },
+   "homepage": "https://github.com/amirsciammas/interview-backend-engineer#readme",
+   "dependencies": {
+      "@types/jest": "^27.4.1",
+      "body-parser": "^1.19.2",
+      "cors": "^2.8.5",
+      "express": "^4.17.3",
+      "helmet": "^5.0.2",
+      "morgan": "^1.10.0",
+      "reflect-metadata": "^0.1.13",
+      "sqlite3": "^4.0.3",
+      "swagger-ui-express": "^4.3.0",
+      "ts-jest": "^27.1.3",
+      "ts-node": "^9.1.1",
+      "typeorm": "0.3.0",
+      "typescript": "^4.6.2"
+   },
+   "devDependencies": {
+      "@types/node": "^16.11.26",
+      "jest": "^27.5.1",
+      "supertest": "^6.2.2",
+      "ts-node": "10.4.0",
+      "typescript": "4.5.2"
+   },
+   "jest": {
+      "testEnvironment": "node",
+      "coveragePathIgnorePatterns": [
+         "/node_modules/"
+      ],
+      "moduleFileExtensions": [
+         "ts",
+         "tsx",
+         "js"
+      ],
+      "transform": {
+         "^.+\\.(ts|tsx)$": "ts-jest"
+      },
+      "globals": {
+         "ts-jest": {
+            "tsConfigFile": "tsconfig.json"
+         }
+      },
+      "testMatch": [
+         "**/tests/*.+(ts|tsx|js)"
+      ]
+   }
+}
