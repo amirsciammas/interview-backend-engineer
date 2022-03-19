@@ -5,5 +5,3 @@ node_modules/
 build/
 tmp/
 temp/
-**/package-lock.json
-**/yarn.lock

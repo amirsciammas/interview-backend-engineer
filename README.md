@@ -39,6 +39,7 @@ The API should have the following endpoints:
 - To run the application: `docker-compose up --build -d application` to run the container, 
 `docker-compose logs -f application` to display the logs and `docker-compose down` to stop and remove the container. 
 Alternatively, `yarn install; yarn start` also works, but the commands cannot be run at the same time as they would share the same port.
+- Once started, Swagger can be accessed via `http://localhost:2500/swagger`.
 - The database used was the provided one. As such, data is already inserted and endpoints can
 be triggered without any required migrations.
 - In order to trigger the requested endpoints, the usage of e.g. curl suits perfectly:
