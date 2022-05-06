@@ -8,6 +8,7 @@
     "lint": "eslint src/index.js",
     "test:unit": "cross-env NODE_ENV=test mocha 'src/**/*.spec.js'",
     "test:unit:watch": "cross-env NODE_ENV=test mocha -w 'src/**/*.spec.js'",
+    "test:unit:cov": "cross-env NODE_ENV=test nyc npm run test:unit",
     "doc:code": "jsdoc -d ./docs/html --debug -r \"./src/\" -t node_modules/minami -R ./README.md",
     "doc:api:folder": "mkdirp docs/api",
     "doc:api:create": "swagger-jsdoc -d swaggerDef.js -o docs/api/device-management-api.yml src/**/*.js",
@@ -47,8 +48,9 @@
     "minami": "^1.2.3",
     "mocha": "^10.0.0",
     "nodemon": "^2.0.16",
-    "swagger-jsdoc": "^6.2.1",
+    "nyc": "^15.1.0",
     "sqlite3": "^5.0.8",
+    "swagger-jsdoc": "^6.2.1",
     "testdouble": "^3.16.5"
   },
   "mocha": {
