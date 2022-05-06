@@ -2,8 +2,9 @@
 import * as databaseRequest from '../controllers/databaseRequest'
 var Router = require('koa-router')
 
+// TODO swagger doc
 /**
- * Getting devices existing in the database.
+ * Getting user by it's id
  * @function devicesGet
  * @async
  * @param {Koa.Context} ctx - Koa context; Encapsulate request and response.
@@ -14,6 +15,9 @@ export const usersGet = async (ctx) => {
         ctx.throw(400, 'Must be a number')
     }
     const user = await databaseRequest.getUsers(id)
+    if (user == "") {
+        ctx.throw(400, 'id not found')
+    }
 
     const users = { user: user }
     ctx.body = JSON.stringify(users)
