@@ -9,13 +9,27 @@ const db = new sqlite3.Database(path.resolve(__dirname, 'database.sqli'), (err, 
 });
 
 /**
- * Getting user by user id.
+ * Get an user by user id.
  * @function getUsers
  * @returns {Promise}
  */
-export const getUsers = (idUser) => {
+export const getUserById = (idUser) => {
     return new Promise((resolve, reject) => {
         db.all(`SELECT * from users WHERE users.id = ${idUser}`, (error, rows) => {
+            if (!error) resolve(rows)
+            else reject(error)
+        })
+    })
+}
+
+/**
+ * Get an user by user id.
+ * @function getUsers
+ * @returns {Promise}
+ */
+export const getUserAlbumByUserId = (idUser) => {
+    return new Promise((resolve, reject) => {
+        db.all(`SELECT * from albums, users WHERE userId = ${idUser}`, (error, rows) => {
             if (!error) resolve(rows)
             else reject(error)
         })
