@@ -11,8 +11,8 @@
     "test:unit:cov": "cross-env NODE_ENV=test nyc npm run test:unit",
     "doc:code": "jsdoc -d ./docs/html --debug -r \"./src/\" -t node_modules/minami -R ./README.md",
     "doc:api:folder": "mkdirp docs/api",
-    "doc:api:create": "swagger-jsdoc -d swaggerDef.js -o docs/api/device-management-api.yml src/**/*.js",
-    "doc:api:validate": "lint-openapi -d docs/api/device-management-api.yml",
+    "doc:api:create": "swagger-jsdoc -d swaggerDef.js -o docs/api/user-management-api.yml src/**/*.js",
+    "doc:api:validate": "lint-openapi -d docs/api/user-management-api.yml",
     "doc:api": "npm run doc:api:folder && npm run doc:api:create && npm run doc:api:validate"
   },
   "repository": {

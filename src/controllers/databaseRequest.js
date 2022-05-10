@@ -41,9 +41,9 @@ export const getUserAlbumByUserId = (idUser) => {
  * @function getUsers
  * @returns {Promise}
  */
-export const getMedia = (idUser, limit, offset) => {
+export const getMedia = (idUser, order, limit, offset) => {
     return new Promise((resolve, reject) => {
-        db.all(`SELECT * from albums, images WHERE albums.userId = ${idUser} AND albums.id = images.albumId LIMIT ${limit} OFFSET ${offset}`, (error, rows) => {
+        db.all(`SELECT albums.userId, albums.id as albumsId, albums.title as albumsTitle, images.id as imagesId, images.title as imageTitle, images.url from albums, images WHERE albums.userId = ${idUser} AND albums.id = images.albumId ORDER BY albums.title ${order} LIMIT ${limit} OFFSET ${offset}`, (error, rows) => {
             if (!error) resolve(rows)
             else reject(error)
         })

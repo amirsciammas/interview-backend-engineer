@@ -1,0 +1,138 @@
+openapi: 3.0.0
+info:
+  title: Adidas Backend assignment
+  version: 1.0.0
+  description: Adidas Backend assignment API documentation
+paths:
+  /users/:id:
+    get:
+      summary: Get user by id
+      description: List of the user
+      tags:
+        - Users
+      operationId: get_user_by_id
+      parameters:
+        - in: header
+          name: id of the user
+          description: id of the user
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Successfully getting user that exists in the database
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Users"
+  /users/:id/album:
+    get:
+      summary: Get album with user by user id
+      description: List of the album and the user
+      tags:
+        - Users
+      operationId: get_album_by_user_id
+      parameters:
+        - in: header
+          name: id of the user
+          description: id of the user
+          required: true
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Successfully getting user that exists in the database
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Users"
+                  - $ref: "#/components/schemas/Albums"
+  /users/:id/media:
+    get:
+      summary: Get album and images by user id
+      description: List of the album and the images by user id
+      tags:
+        - Users
+      operationId: get_media_by_user_id
+      parameters:
+        - in: header
+          name: id of the user
+          description: id of the user
+          required: true
+          schema:
+            type: number
+        - in: query
+          name: order
+          description: order that you want to have
+          schema:
+            type: string
+        - in: query
+          name: limit
+          description: limit that you want to have
+          schema:
+            type: number
+        - in: query
+          name: offset
+          description: offset that you want to have
+          schema:
+            type: number
+      responses:
+        "200":
+          description: Successfully getting user that exists in the database
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/Users"
+                  - $ref: "#/components/schemas/Images"
+components:
+  schemas:
+    Users:
+      description: Schema of users
+      type: object
+      properties:
+        id:
+          type: number
+          description: id of the user
+        name:
+          type: string
+          description: name of the user
+        email:
+          type: string
+          description: email of the user
+        address_geo_lat:
+          type: number
+          description: Geospatial address latitude of the user
+        address_geo_lng:
+          type: number
+          description: Geospatial address longitude of the user
+    Albums:
+      description: Schema of albums
+      type: object
+      properties:
+        userId:
+          type: number
+          description: id of the user
+        id:
+          type: number
+          description: id of the album
+        title:
+          type: string
+          description: title of the album
+    Images:
+      description: Schema of images
+      type: object
+      properties:
+        albumId:
+          type: number
+          description: id of the album
+        imagesId:
+          type: number
+          description: id of the image
+        imageTitle:
+          type: string
+          description: title of the album
+tags:
+  - name: Users
+    description: user management
