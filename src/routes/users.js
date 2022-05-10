@@ -232,7 +232,7 @@ router.get('get-user-album', '/:id/album', userAlbumGet)
  *             application/json:
  *               schema:
  *                  allOf:
- *                      - $ref: "#/components/schemas/Users" 
+ *                      - $ref: "#/components/schemas/Albums" 
  *                      - $ref: "#/components/schemas/Images" 
  * */
 router.get('get-media', '/:id/media', mediaGet)
