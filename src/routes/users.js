@@ -24,7 +24,7 @@ export const usersGet = async (ctx) => {
 }
 
 /**
- * Getting user by it's id
+ * Getting an user and an album by user id
  * @function devicesGet
  * @async
  * @param {Koa.Context} ctx - Koa context; Encapsulate request and response.
@@ -42,6 +42,30 @@ export const userAlbumGet = async (ctx) => {
     const users = { user: user }
     ctx.body = JSON.stringify(users)
 }
+
+/**
+ * Getting an user and an album by user id
+ * @function devicesGet
+ * @async
+ * @param {Koa.Context} ctx - Koa context; Encapsulate request and response.
+ */
+export const mediaGet = async (ctx) => {
+    const id = ctx.params.id
+    const offset = ctx.query.offset
+    const limit = ctx.query.limit
+    if (isNaN(id)) {
+        ctx.throw(400, 'Must be a number')
+    }
+    const user = await databaseRequest.getMedia(id, limit, offset)
+    if (user == "") {
+        ctx.throw(404, 'id not found')
+    }
+
+    const users = { user: user }
+    ctx.body = JSON.stringify(users)
+}
+
+
 
 const router = new Router()
 
@@ -80,5 +104,23 @@ router.get('get-user', '/:id', usersGet)
  *                 $ref: '#/components/schemas/Users'
  * */
 router.get('get-user-album', '/:id/album', userAlbumGet)
+
+/**
+ * @swagger
+ * /users/:id/media
+ *   get:
+ *    summary: Get user and albums by user id
+ *    description: List of the alubm and user
+ *    tags: [Users]
+ *    operationId: get_user_album_by_user_id
+ *    responses:
+ *        '200':
+ *           description: Successfully getting user that exists in the database
+ *           content:
+ *             application/json:
+ *               schema:
+ *                 $ref: '#/components/schemas/Users'
+ * */
+router.get('get-media', '/:id/media', mediaGet)
 
 export const routes = router.routes()

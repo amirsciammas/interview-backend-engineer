@@ -23,13 +23,27 @@ export const getUserById = (idUser) => {
 }
 
 /**
- * Get an user by user id.
+ * Get an user and an album by user id.
  * @function getUsers
  * @returns {Promise}
  */
 export const getUserAlbumByUserId = (idUser) => {
     return new Promise((resolve, reject) => {
         db.all(`SELECT * from albums, users WHERE userId = ${idUser}`, (error, rows) => {
+            if (!error) resolve(rows)
+            else reject(error)
+        })
+    })
+}
+
+/**
+ * Get image and album by user id.
+ * @function getUsers
+ * @returns {Promise}
+ */
+export const getMedia = (idUser, limit, offset) => {
+    return new Promise((resolve, reject) => {
+        db.all(`SELECT * from albums, images WHERE albums.userId = ${idUser} AND albums.id = images.albumId LIMIT ${limit} OFFSET ${offset}`, (error, rows) => {
             if (!error) resolve(rows)
             else reject(error)
         })
