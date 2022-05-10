@@ -34,3 +34,8 @@ The API should have the following endpoints:
 - [ ] Code is easily understood and communicative (eg. comments, variable names, etc). 
 - [ ] Everything that you decide to not do due to the limitation of time should be documented in the README.
 - [ ] GitHub commit history is consistent, easy to follow and understand. 
+
+### **How to launch the API?**
+- Write `npm i` to install all the package used.
+- Write `npm start` to launch the app and do your request by using Postman.
+- TO see the API documentation write `npm run doc:api`, it will open the documentation in a new page.
