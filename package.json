@@ -13,7 +13,9 @@
     "doc:api:folder": "mkdirp docs/api",
     "doc:api:create": "swagger-jsdoc -d swaggerDef.js -o docs/api/user-management-api.yml src/**/*.js",
     "doc:api:validate": "lint-openapi -d docs/api/user-management-api.yml",
-    "doc:api": "npm run doc:api:folder && npm run doc:api:create && npm run doc:api:validate"
+    "doc:api:launch": "swagger-ui ./docs/api/user-management-api.yml",
+    "doc:api": "npm run doc:api:folder && npm run doc:api:create && npm run doc:api:validate && npm run npm run doc:api:launch"
+    
   },
   "repository": {
     "type": "git",
@@ -51,6 +53,7 @@
     "nyc": "^15.1.0",
     "sqlite3": "^5.0.8",
     "swagger-jsdoc": "^6.2.1",
+    "swagger-ui-cli": "^0.11.1",
     "testdouble": "^3.16.5"
   },
   "mocha": {
