@@ -9,7 +9,7 @@ The `database.sqli` file is a database that includes 3 tables:
 - *albums* - albums of a user
 - *images* - images of an album
 
-The `entities_sample.txt` file includes the structure of the tables and sample data of each table.
+The `entities_sample.txt` file includes the structur e of the tables and sample data of each table.
 
 The API should have the following endpoints:
 - Get User by user Id
