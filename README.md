@@ -1,36 +1,42 @@
-# Backend Engineer Interview Project
+# CRUD Rest API Nodejs with Typescript
 
-### **High level spec**
+Sample Nodejs API with Typescript and Mongodb
 
-Your task is to build a REST API using TypeScript with Node.js that returns data from sqlite database.
+## Script:
 
-The `database.sqli` file is a database that includes 3 tables:
-- *users* - each row represnts a single user
-- *albums* - albums of a user
-- *images* - images of an album
+- npm install
+- npm start
 
-The `entities_sample.txt` file includes the structur e of the tables and sample data of each table.
+## Nodejs Typescript project
 
-The API should have the following endpoints:
-- Get User by user Id
-- Get User and Albums by user Id
-- Get Albums and Images by user Id
-    - Endpoint should include support for pagination
-    - Endpoint should include support for sorting by album title
+Follow these steps to create a new nodejs project with Typescript
 
------
-
-### **How to share your results?**
-- [ ] Clone this repository to your private account.
-- [ ] .... develop .....
-- [ ] Once you are ready, create a pull request from your private repo and branch to the original repository.
+- npm init
+- tsc --init
+- configure tsconfig.json file:
+  - "outDir": "./build", ( Redirect output structure to the directory. )
+  - "rootDir": "./src", ( Specify the root directory of input files. Use to control the output directory structure with outDir.)
 
 
-### **Evaluation:**
-- [ ] There should be **at least** one test written and the README file should include instructions on how to execute it.
-- [ ] You should provide clear documentation of the API, you can use Swagger or any other format.
-- [ ] The app should build without errors (typically using `npm run build`). If there are necessary steps required to get it to compile, those should be covered in the README.md.
-- [ ] No crashes or bugs.
-- [ ] Code is easily understood and communicative (eg. comments, variable names, etc). 
-- [ ] Everything that you decide to not do due to the limitation of time should be documented in the README.
-- [ ] GitHub commit history is consistent, easy to follow and understand. 
+## Endponts:
+[HOST] : localhost:5000
+
+### User:
+
+Get User by user Id
+- Method: GET
+         [HOST]/user/userId
+Get User and Albums by user Id
+  -Method: GET
+          [HOST]/users/:userId/albums?sort=title&order=desc
+          Pagination : 
+          [HOST]/users/:userId/albums?limit=10&offset=5
+
+-Method: GET
+          [HOST]/users/:userId/albums/images?sort=title&order=desc
+          Pagination : 
+          [HOST]/users/:userId/albums/images?limit=10&offset=5
+
+
+
+
