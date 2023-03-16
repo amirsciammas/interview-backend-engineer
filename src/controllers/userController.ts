@@ -7,7 +7,7 @@ export class UserController {
       const userId = parseInt(req.params.id);
       const user = await getUserByIdData(userId);
       if(!user) {
-        res.status(200).json({ message: "Invalid User id"});
+        res.status(404).json({ message: "Invalid User id"});
       }
       res.status(200).json(user);
     } catch (error) {
