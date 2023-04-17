@@ -34,3 +34,8 @@ The API should have the following endpoints:
 - [ ] Code is easily understood and communicative (eg. comments, variable names, etc). 
 - [ ] Everything that you decide to not do due to the limitation of time should be documented in the README.
 - [ ] GitHub commit history is consistent, easy to follow and understand. 
+
+### **To run application:**
+
+- npm install
+- npm start
